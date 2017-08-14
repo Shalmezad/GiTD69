@@ -1,4 +1,5 @@
 package ;
+import flixel.math.FlxPoint;
 import flixel.FlxObject;
 import flixel.FlxObject;
 import flixel.FlxG;
@@ -48,7 +49,7 @@ class Player extends FlxSprite
 		if(InputHandler.SLASH())
 		{
 			var playState:PlayState = cast FlxG.state;
-			playState.swordSlash(this.getPosition(), this.facing);
+			playState.swordSlash(this.getCenter(), this.facing);
 		}
 	}
 
@@ -81,10 +82,17 @@ class Player extends FlxSprite
 		if(charge > 0)
 		{
 			var playState:PlayState = cast FlxG.state;
-			playState.lightCharge(this.getPosition(), this.charge);
+			playState.lightCharge(this.getCenter(), this.charge);
 		}
 		charge = 0;
 	}
 
+	private function getCenter():FlxPoint
+	{
+		var pos:FlxPoint = this.getPosition();
+		pos.x = pos.x + this.width/2;
+		pos.y = pos.y + this.height/2;
+		return pos;
+	}
 
 }

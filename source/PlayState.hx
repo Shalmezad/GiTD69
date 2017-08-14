@@ -56,9 +56,9 @@ class PlayState extends FlxState
 
 
 		add(tileMap);
-		add(player);
 		add(swordSlashes);
 		add(lightParticles);
+		add(player);
 
 		FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);
 
