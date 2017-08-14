@@ -76,7 +76,7 @@ class PlayState extends FlxState
 	{
 		trace("swordSlash");
 		var slash:SwordSlash = swordSlashes.recycle();
-		slash.reset(location.x, location.y);
+		slash.resetWithFacing(location.x, location.y, direction);
 		if(direction == FlxObject.LEFT)
 		{
 			slash.velocity.x = -SLASH_SPEED;

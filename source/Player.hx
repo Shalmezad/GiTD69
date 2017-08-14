@@ -17,9 +17,12 @@ class Player extends FlxSprite
 	public function new()
 	{
 		super(40,0);
-		makeGraphic(10,10,0xFFFF00FF);
+		loadGraphic("assets/images/dwarf.png");
 		acceleration.y = GRAVITY;
 		maxVelocity.y = JUMP_SPEED;
+		this.setFacingFlip(FlxObject.LEFT, true, false);
+		this.setFacingFlip(FlxObject.RIGHT, false, false);
+		this.centerOrigin();
 	}
 
 	override public function update(elapsed:Float):Void

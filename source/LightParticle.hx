@@ -13,7 +13,7 @@ class LightParticle extends FlxSprite
 	public function new()
 	{
 		super();
-		makeGraphic(2,10,0xFFFFFFDD);
+		loadGraphic("assets/images/light_particle.png");
 	}
 
 
