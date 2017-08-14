@@ -77,10 +77,8 @@ class Player extends FlxSprite
 	{
 		if(charge > 0)
 		{
-			//TODO: Release a charge
-			//From flxinvaders:
-			//var playState:PlayState = cast FlxG.state;
-			//Little hacky, but it'll get me the objects I need...
+			var playState:PlayState = cast FlxG.state;
+			playState.lightCharge(this.getPosition(), this.charge);
 		}
 		charge = 0;
 	}

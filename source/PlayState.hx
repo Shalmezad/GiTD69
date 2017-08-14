@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxBasic.FlxType;
 import flixel.FlxObject;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxPoint;
@@ -21,6 +22,7 @@ class PlayState extends FlxState
 	var player:Player;
 	var tileMap:FlxTilemap;
 	var swordSlashes:FlxTypedGroup<SwordSlash>;
+	var lightParticles:FlxTypedGroup<LightParticle>;
 
 	override public function create():Void
 	{
@@ -28,6 +30,7 @@ class PlayState extends FlxState
 		player = new Player();
 		tileMap = new FlxTilemap();
 		swordSlashes = new FlxTypedGroup(4);
+		lightParticles = new FlxTypedGroup(12);
 
 		//Set up our tilemap:
 		//loadMapFromCSV(MapData:String, TileGraphic:FlxTilemapGraphicAsset, TileWidth:Int = 0, TileHeight:Int = 0,
@@ -44,11 +47,18 @@ class PlayState extends FlxState
 			slash.exists = false;
 			swordSlashes.add(slash);
 		}
+		for(i in 0...12)
+		{
+			var light:LightParticle = new LightParticle();
+			light.exists = false;
+			lightParticles.add(light);
+		}
 
 
 		add(tileMap);
 		add(player);
 		add(swordSlashes);
+		add(lightParticles);
 
 		FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);
 
@@ -74,6 +84,15 @@ class PlayState extends FlxState
 		else
 		{
 			slash.velocity.x = SLASH_SPEED;
+		}
+	}
+
+	public function lightCharge(location:FlxPoint, charge:Float)
+	{
+		for(i in 0...12)
+		{
+			var light:LightParticle = lightParticles.recycle();
+			light.resetWithIndex(location.x, location.y, i);
 		}
 	}
 }
