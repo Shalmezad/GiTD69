@@ -19,6 +19,9 @@ class PlayState extends FlxState
 {
 	private var SLASH_SPEED = 140;
 
+	var bg_1:FlxSprite;
+	var bg_2:FlxSprite;
+	var bg_3:FlxSprite;
 	var player:Player;
 	var tileMap:FlxTilemap;
 	var swordSlashes:FlxTypedGroup<SwordSlash>;
@@ -31,6 +34,18 @@ class PlayState extends FlxState
 		tileMap = new FlxTilemap();
 		swordSlashes = new FlxTypedGroup(4);
 		lightParticles = new FlxTypedGroup(12);
+
+		bg_1 = new FlxSprite();
+		bg_2 = new FlxSprite();
+		bg_3 = new FlxSprite();
+
+		//Load our backgrounds:
+		bg_1.loadGraphic("assets/images/background_1.png");
+		bg_2.loadGraphic("assets/images/background_2.png");
+		bg_3.loadGraphic("assets/images/background_3.png");
+		bg_1.scrollFactor.set(0,0);
+		bg_2.scrollFactor.set(0,0);
+		bg_3.scrollFactor.set(0,0);
 
 		//Set up our tilemap:
 		//loadMapFromCSV(MapData:String, TileGraphic:FlxTilemapGraphicAsset, TileWidth:Int = 0, TileHeight:Int = 0,
@@ -54,6 +69,9 @@ class PlayState extends FlxState
 			lightParticles.add(light);
 		}
 
+		add(bg_1);
+		add(bg_2);
+		add(bg_3);
 
 		add(tileMap);
 		add(swordSlashes);
