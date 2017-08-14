@@ -36,7 +36,7 @@ class InputHandler
 
 	public static function SLASH():Bool
 	{
-		return FlxG.keys.anyPressed([FlxKey.C]);
+		return FlxG.keys.anyJustPressed([FlxKey.C]);
 	}
 
 }

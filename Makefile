@@ -1,2 +1,2 @@
 run:
-	lime build neko && lime run neko
+	lime build -debug neko && lime run -debug neko

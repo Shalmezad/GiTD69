@@ -1,4 +1,7 @@
 package ;
+import flixel.FlxObject;
+import flixel.FlxObject;
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxObject;
 
@@ -26,7 +29,7 @@ class Player extends FlxSprite
 		{
 			handleMovement();
 			releaseCharge();
-			//TODO: Handle slash
+			handleSlash();
 			//TODO: Handle roll
 		}
 		else
@@ -36,14 +39,26 @@ class Player extends FlxSprite
 		super.update(elapsed);
 	}
 
+	private function handleSlash():Void
+	{
+		//TODO: Implement cooldown
+		if(InputHandler.SLASH())
+		{
+			var playState:PlayState = cast FlxG.state;
+			playState.swordSlash(this.getPosition(), this.facing);
+		}
+	}
+
 	private function handleMovement():Void
 	{
 		if(InputHandler.LEFT() && !InputHandler.RIGHT())
 		{
+			this.set_facing(FlxObject.LEFT);
 			velocity.x = -1 * RUN_SPEED;
 		}
 		if(InputHandler.RIGHT() && !InputHandler.LEFT())
 		{
+			this.set_facing(FlxObject.RIGHT);
 			velocity.x = 1 * RUN_SPEED;
 		}
 		if(InputHandler.JUMP() && isTouching(FlxObject.FLOOR))
