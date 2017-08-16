@@ -77,6 +77,7 @@ class PlayState extends FlxState
 		add(swordSlashes);
 		add(lightParticles);
 		add(player);
+		add(new EnemyOrb());
 
 		FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);
 
