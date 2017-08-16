@@ -1,5 +1,7 @@
 package;
 
+import flixel.FlxG;
+import flixel.math.FlxRandom;
 class EnemyOrb extends Enemy
 {
 	private var initial_y:Float;
@@ -12,7 +14,6 @@ class EnemyOrb extends Enemy
 		this.centerOrigin();
 		animation.add("bubble", [0,1,2,3], 6, true);
 		animation.play("bubble");
-		velocity.x = 20;
 	}
 
 	override public function update(elapsed:Float):Void
@@ -22,4 +23,30 @@ class EnemyOrb extends Enemy
 		super.update(elapsed);
 	}
 
+	public function resetSpawn():Void
+	{
+		//Pick either left or right:
+		var playState:PlayState = cast FlxG.state;
+		var directionToFace:Int = playState.random.int(0, 2);
+		var tempX:Float = 0;
+		var tempY:Float = 0;
+		if(directionToFace == 0)
+		{
+			tempX = 0 - width;
+		}
+		else
+		{
+			tempX = FlxG.worldBounds.width;
+		}
+		//Give us a y:
+		tempY = playState.random.float(0,FlxG.worldBounds.height);
+		reset(tempX,tempY);
+		if(tempX < 0)
+			velocity.x = 40;
+		else
+			velocity.x = -40;
+
+
+		initial_y = tempY;
+	}
 }
