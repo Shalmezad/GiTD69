@@ -77,7 +77,7 @@ class PlayState extends FlxState
 		add(swordSlashes);
 		add(lightParticles);
 		add(player);
-		add(new EnemyOrb());
+		add(new EnemyGhost());
 
 		FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);
 
@@ -93,7 +93,6 @@ class PlayState extends FlxState
 	//Direction is based on FlxObject directions
 	public function swordSlash(location:FlxPoint, direction:Int)
 	{
-		trace("swordSlash");
 		var slash:SwordSlash = swordSlashes.recycle();
 		slash.resetWithFacing(location.x, location.y, direction);
 		if(direction == FlxObject.LEFT)
