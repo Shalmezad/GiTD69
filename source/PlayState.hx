@@ -19,10 +19,10 @@ class PlayState extends FlxState
 {
 	private var SLASH_SPEED = 140;
 
+	public var player:Player;
 	var bg_1:FlxSprite;
 	var bg_2:FlxSprite;
 	var bg_3:FlxSprite;
-	var player:Player;
 	var tileMap:FlxTilemap;
 	var swordSlashes:FlxTypedGroup<SwordSlash>;
 	var lightParticles:FlxTypedGroup<LightParticle>;

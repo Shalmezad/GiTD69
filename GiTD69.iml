@@ -47,5 +47,16 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library name="haxelib|/usr/local/lib/haxe/lib/flixel/4,3,0">
+        <CLASSES>
+          <root url="file:///usr/local/lib/haxe/lib/flixel/4,3,0" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file:///usr/local/lib/haxe/lib/flixel/4,3,0" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

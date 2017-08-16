@@ -10,8 +10,8 @@ class Main extends Sprite
 	{
 		super();
 		var zoom:Int=1;
-		var updateFrameRate:Int = 30;
-		var drawFrameRate:Int = 30;
+		var updateFrameRate:Int = 60;
+		var drawFrameRate:Int = 60;
 		var skipSplash:Bool = true;
 		var fullScreen:Bool = false;
 		addChild(new FlxGame(320, 240, PlayState, zoom, updateFrameRate, drawFrameRate, skipSplash, fullScreen));
