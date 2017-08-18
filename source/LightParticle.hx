@@ -14,6 +14,7 @@ class LightParticle extends FlxSprite
 	{
 		super();
 		loadGraphic("assets/images/light_particle.png");
+		this.health = 2;
 	}
 
 

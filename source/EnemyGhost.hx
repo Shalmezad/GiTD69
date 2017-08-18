@@ -63,6 +63,7 @@ class EnemyGhost extends Enemy
 		}
 		//Give us a y:
 		tempY = playState.random.float(0,FlxG.worldBounds.height);
+		this.health = 5;
 		reset(tempX,tempY);
 	}
 

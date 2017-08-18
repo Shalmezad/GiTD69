@@ -37,17 +37,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="haxelib|openfl">
-        <CLASSES>
-          <root url="file:///usr/local/lib/haxe/lib/openfl/3,6,1" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file:///usr/local/lib/haxe/lib/openfl/3,6,1" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="haxelib|/usr/local/lib/haxe/lib/flixel/4,3,0">
         <CLASSES>
           <root url="file:///usr/local/lib/haxe/lib/flixel/4,3,0" />

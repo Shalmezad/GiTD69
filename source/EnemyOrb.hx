@@ -46,6 +46,7 @@ class EnemyOrb extends Enemy
 		else
 			velocity.x = -40;
 
+		this.health = 2;
 
 		initial_y = tempY;
 	}

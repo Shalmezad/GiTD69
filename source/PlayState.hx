@@ -97,6 +97,22 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		handleSpawn(elapsed);
 		FlxG.collide(player, tileMap);
+		FlxG.overlap(lightParticles, enemies, projectileEnemyOverlap);
+		FlxG.overlap(swordSlashes, enemies, projectileEnemyOverlap);
+		FlxG.overlap(enemies, player, enemyPlayerOverlap);
+	}
+
+	private function projectileEnemyOverlap(bullet:Dynamic, enemy:Dynamic):Void
+	{
+		var castedEnemy:Enemy = cast enemy;
+		var castedBullet:FlxSprite = cast bullet;
+
+		castedEnemy.attemptHurt(castedBullet.health);
+	}
+
+	private function enemyPlayerOverlap(enemy:Dynamic, p:Dynamic):Void
+	{
+		player.attemptHurt(1);
 	}
 
 	private function handleSpawn(elapsed:Float):Void

@@ -1,4 +1,5 @@
 package ;
+import flixel.effects.FlxFlicker;
 import flixel.math.FlxPoint;
 import flixel.FlxObject;
 import flixel.FlxObject;
@@ -24,6 +25,7 @@ class Player extends FlxSprite
 		this.setFacingFlip(FlxObject.LEFT, true, false);
 		this.setFacingFlip(FlxObject.RIGHT, false, false);
 		this.centerOrigin();
+		this.health = 3;
 	}
 
 	override public function update(elapsed:Float):Void
@@ -93,6 +95,16 @@ class Player extends FlxSprite
 		pos.x = pos.x + this.width/2;
 		pos.y = pos.y + this.height/2;
 		return pos;
+	}
+
+	public function attemptHurt(damage:Float):Void
+	{
+		if(!FlxFlicker.isFlickering(this))
+		{
+			// Damage us:
+			this.hurt(damage);
+			FlxFlicker.flicker(this, 3);
+		}
 	}
 
 }

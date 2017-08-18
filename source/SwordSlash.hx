@@ -10,6 +10,7 @@ class SwordSlash extends FlxSprite
 		loadGraphic("assets/images/sword_slash.png");
 		this.setFacingFlip(FlxObject.LEFT, true, false);
 		this.setFacingFlip(FlxObject.RIGHT, false, false);
+		this.health = 1.0;
 	}
 
 
