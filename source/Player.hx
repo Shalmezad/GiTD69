@@ -20,13 +20,21 @@ class Player extends FlxSprite
 	public function new()
 	{
 		super(40,0);
-		loadGraphic("assets/images/dwarf.png");
+		loadGraphic("assets/images/dwarf-sheet.png", true, 38, 23);
+		animation.add("move", [0], 1, false);
+		animation.add("slash", [0,1,2,3], 20, false);
+		animation.add("chant", [4,5], 5, true);
+		animation.add("chant-glowing", [6,7], 5, true);
+		animation.play("move");
 		acceleration.y = GRAVITY;
 		maxVelocity.y = JUMP_SPEED;
 		this.setFacingFlip(FlxObject.LEFT, true, false);
 		this.setFacingFlip(FlxObject.RIGHT, false, false);
 		this.centerOrigin();
 		this.health = MAX_HEALTH;
+		this.width = 12;
+		this.height = 20;
+		this.offset.set(9, 23-this.height);
 	}
 
 	override public function update(elapsed:Float):Void
@@ -53,6 +61,7 @@ class Player extends FlxSprite
 		{
 			var playState:PlayState = cast FlxG.state;
 			playState.swordSlash(this.getCenter(), this.facing);
+			animation.play("slash");
 		}
 	}
 
@@ -62,11 +71,13 @@ class Player extends FlxSprite
 		{
 			this.set_facing(FlxObject.LEFT);
 			velocity.x = -1 * RUN_SPEED;
+			this.offset.set(38-9-this.width, 23-this.height);
 		}
 		if(InputHandler.RIGHT() && !InputHandler.LEFT())
 		{
 			this.set_facing(FlxObject.RIGHT);
 			velocity.x = 1 * RUN_SPEED;
+			this.offset.set(9, 23-this.height);
 		}
 		if(InputHandler.JUMP() && isTouching(FlxObject.FLOOR))
 		{
@@ -78,14 +89,26 @@ class Player extends FlxSprite
 	private function handleCharging(elapsed:Float):Void
 	{
 		charge += elapsed;
+		if(charge > 2)
+		{
+			animation.play("chant-glowing");
+		}
+		else
+		{
+			animation.play("chant");
+		}
 	}
 
 	private function releaseCharge():Void
 	{
-		if(charge > 0)
+		if(charge > 2)
 		{
 			var playState:PlayState = cast FlxG.state;
-			playState.lightCharge(this.getCenter(), this.charge);
+			playState.lightCharge(this.getCenter(), this.charge-2);
+		}
+		if(charge > 0)
+		{
+			animation.play("move");
 		}
 		charge = 0;
 	}
