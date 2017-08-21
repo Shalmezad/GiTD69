@@ -1,5 +1,6 @@
 package;
 
+import flixel.addons.transition.FlxTransitionableState;
 import flixel.math.FlxRandom;
 import flixel.FlxBasic.FlxType;
 import flixel.FlxObject;
@@ -17,7 +18,7 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
 
-class PlayState extends FlxState
+class PlayState extends FlxTransitionableState
 {
 	private var SLASH_SPEED = 140;
 
