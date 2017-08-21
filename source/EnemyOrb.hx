@@ -20,6 +20,15 @@ class EnemyOrb extends Enemy
 	{
 		timeAlive += elapsed;
 		this.y = initial_y +  Math.cos(timeAlive) * 20;
+		// Kill if we're at the opposite side
+		if(this.velocity.x < 0 && this.x < -40)
+		{
+			kill();
+		}
+		if(this.velocity.x > 0 && this.x > FlxG.worldBounds.width)
+		{
+			kill();
+		}
 		super.update(elapsed);
 	}
 
