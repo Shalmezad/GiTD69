@@ -29,6 +29,7 @@ class PlayState extends FlxState
 	var swordSlashes:FlxTypedGroup<SwordSlash>;
 	var lightParticles:FlxTypedGroup<LightParticle>;
 	var enemies:FlxGroup;
+	var gui:GUI;
 
 	var spawnTimer:Float;
 
@@ -43,6 +44,7 @@ class PlayState extends FlxState
 		swordSlashes = new FlxTypedGroup(4);
 		lightParticles = new FlxTypedGroup(12);
 		enemies = new FlxTypedGroup();
+		gui = new GUI();
 
 		bg_1 = new FlxSprite();
 		bg_2 = new FlxSprite();
@@ -86,6 +88,8 @@ class PlayState extends FlxState
 		add(lightParticles);
 		add(player);
 		add(enemies);
+
+		add(gui);
 
 		FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);
 		spawnTimer = 1;

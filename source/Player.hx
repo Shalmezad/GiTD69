@@ -9,6 +9,7 @@ import flixel.FlxObject;
 
 class Player extends FlxSprite
 {
+	public static var MAX_HEALTH:Int = 3;
 
 	private var RUN_SPEED = 140;
 	private var GRAVITY = 420;
@@ -25,7 +26,7 @@ class Player extends FlxSprite
 		this.setFacingFlip(FlxObject.LEFT, true, false);
 		this.setFacingFlip(FlxObject.RIGHT, false, false);
 		this.centerOrigin();
-		this.health = 3;
+		this.health = MAX_HEALTH;
 	}
 
 	override public function update(elapsed:Float):Void
