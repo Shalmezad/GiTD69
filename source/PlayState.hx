@@ -55,9 +55,9 @@ class PlayState extends FlxTransitionableState
 		bg_1.loadGraphic("assets/images/background_1.png");
 		bg_2.loadGraphic("assets/images/background_2.png");
 		bg_3.loadGraphic("assets/images/background_3.png");
-		bg_1.scrollFactor.set(0,0);
-		bg_2.scrollFactor.set(0,0);
-		bg_3.scrollFactor.set(0,0);
+		bg_1.scrollFactor.set(0,0.2);
+		bg_2.scrollFactor.set(0.2,0.3);
+		bg_3.scrollFactor.set(0,0.2);
 
 		//Set up our tilemap:
 		//loadMapFromCSV(MapData:String, TileGraphic:FlxTilemapGraphicAsset, TileWidth:Int = 0, TileHeight:Int = 0,
